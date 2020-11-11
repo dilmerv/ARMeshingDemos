@@ -77,25 +77,23 @@ public class PlaceOnMesh : MonoBehaviour
 
     void Update() 
     {
-        for (int i = 0; i < Input.touchCount; i++) 
+        for(int i = 0; i < Input.touchCount; i++)
         {
             var touch = Input.GetTouch(i);
             var touchPhase = touch.phase;
 
-            if (touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved) 
+            if(touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved)
             {
                 var ray = arCamera.ScreenPointToRay(touch.position);
                 var hasHit = Physics.Raycast(ray, out var hit, float.PositiveInfinity, layersToInclude);
 
-                if (hasHit) 
+                if(hasHit && prefabs.Length > 0)
                 {
-                    GameObject newObject = null;
                     Vector3 scale = Vector3.one * prefabSize.value;
                     Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    
+
                     int selector = Random.Range(0, prefabs.Length);
-                    newObject = GameObject.Instantiate(prefabs[selector], hit.point, newObjectRotation);
-                   
+                    GameObject newObject = GameObject.Instantiate(prefabs[selector], hit.point, newObjectRotation);
 
                     newObject.transform.localScale = scale;
                     newObject.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
