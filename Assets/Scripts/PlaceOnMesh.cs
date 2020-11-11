@@ -9,7 +9,7 @@ public class PlaceOnMesh : MonoBehaviour
     private ARMeshManager meshManager = null;
 
     [SerializeField] 
-    private ARSessionOrigin origin = null;
+    private Camera arCamera = null;
 
     [SerializeField] 
     private Material invisibleMaterial = null;
@@ -84,7 +84,7 @@ public class PlaceOnMesh : MonoBehaviour
 
             if (touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved) 
             {
-                var ray = origin.camera.ScreenPointToRay(touch.position);
+                var ray = arCamera.ScreenPointToRay(touch.position);
                 var hasHit = Physics.Raycast(ray, out var hit, float.PositiveInfinity, layersToInclude);
 
                 if (hasHit) 

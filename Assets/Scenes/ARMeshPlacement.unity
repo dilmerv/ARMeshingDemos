@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshManager: {fileID: 1703781470}
-  origin: {fileID: 1459973817}
+  arCamera: {fileID: 770855402}
   invisibleMaterial: {fileID: 2100000, guid: e6709474a883a4288964a75694aee376, type: 2}
   visibleMaterial: {fileID: 2100000, guid: 642c3c05f8b2d4f01bdd485cb439c186, type: 2}
   prefabs:
