@@ -82,6 +82,10 @@ public class PlaceOnMesh : MonoBehaviour
             var touch = Input.GetTouch(i);
             var touchPhase = touch.phase;
 
+            bool isOverUI = touch.position.IsPointOverUIObject();
+
+            if(isOverUI) return;
+
             if(touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved)
             {
                 var ray = arCamera.ScreenPointToRay(touch.position);
